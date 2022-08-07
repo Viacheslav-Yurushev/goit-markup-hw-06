@@ -33,6 +33,7 @@ body {
 button {
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 .list {
@@ -509,43 +510,53 @@ button {
   color: var(--text-color-dark-terms);
   margin-bottom: 20px;
 }
-
-.subscribe-add {
-  /* display: flex; */
+.subscribe-form {
+  display: flex;
   height: 50px;
 }
 .subscribe-write {
-  display: inline-block;
+  position: relative;
   width: 358px;
-  height: 100%;
-  align-items: center;
   border: 1px solid rgba(255, 255, 255, 0.3);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
   border-radius: 4px;
-  padding-top: 15px;
-  padding-right: 16px;
-  padding-bottom: 15px;
-  padding-left: 16px;
+}
+.subscribe-write-text {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
 }
 
 .subscribe-add-mail {
   background-color: transparent;
-  /* width: 100%; */
-  /* border: none; */
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  color: var(--text-color-dark-terms);
+  padding-left: 70px;
+  padding-right: 12px;
 }
 .subscribe-btn {
-  /* display: flex; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 200px;
   height: 100%;
   margin-left: 12px;
   font-weight: 700;
   font-size: 16px;
   line-height: 1.88;
-  align-items: center;
-  text-align: center;
   letter-spacing: 0.06em;
   color: var(--text-color-dark-terms);
   background-color: var(--accent-color);
+}
+.subsribe-btn-icon {
+  width: 24px;
+  height: 24px;
+  fill: rgb(255, 255, 255);
+  margin-left: 10px;
 }
 
 /* ----Футер---- */
@@ -691,7 +702,6 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 528px;
-  height: 521px;
   padding: 40px;
   background-color: #ffffff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -755,20 +765,100 @@ button {
   margin-bottom: 4px;
 }
 .caption-form-write {
-  border: 1px solid rgba(33, 33, 33, 0.2);
-  border-radius: 4px;
+  position: relative;
   margin-bottom: 10px;
 }
+.caption-form-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+.caption-form-input:focus + .modal-form-icon {
+  fill: var(--accent-color);
+}
+
+.caption-form-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  padding-right: 12px;
+  padding-left: 42px;
+  cursor: pointer;
+  transition: border-color var(--transform-durac) var(--transition-func);
+}
+.modal-form-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  transition: fill var(--transform-durac) var(--transition-func);
+}
 .caption-form-comment {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: 0.01em;
+  resize: none;
   height: 120px;
   padding: 12px 16px;
   margin-bottom: 20px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
+  transition: border-color var(--transform-durac) var(--transition-func);
+}
+.caption-form-comment::placeholder {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+}
+.caption-form-comment:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+.agreed-license {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  color: var(--primery-text-color);
+  margin-bottom: 30px;
+}
+
+.agreed-license::before {
+  content: " ";
+  display: block;
+  width: 16px;
+  height: 15px;
+  border-radius: 2px;
+  border: 2px solid #212121;
+  margin-left: 12px;
+  margin-right: 9px;
+  cursor: pointer;
+  transition: background-color var(--transform-durac) var(--transition-func),
+    border var(--transform-durac) var(--transition-func);
+}
+.modal-form-check:focus + .agreed-license::before {
+  outline: auto;
+}
+
+.modal-form-check:checked + .agreed-license::before {
+  border: none;
+  background-color: var(--accent-color);
+  background-image: url("../image/icon/check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 11px auto;
+}
+
+.agreed-license > a {
+  text-decoration-line: underline;
+  color: var(--accent-color);
+}
+
+.modal-form-check.hidden-title {
+  top: 460px;
+  left: 60px;
 }
 
 .modal-send-btn {
@@ -780,7 +870,9 @@ button {
   color: #ffffff;
   width: 200px;
   height: 50px;
-  background: var(--accent-color);
+  align-self: center;
+  transition: background-color var(--transform-durac) var(--transition-func);
+  background-color: var(--accent-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 }
