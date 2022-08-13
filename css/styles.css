@@ -819,6 +819,7 @@ button {
 }
 .agreed-license {
   display: flex;
+  justify-content: center;
   align-items: center;
   font-weight: 400;
   font-size: 14px;
@@ -835,7 +836,6 @@ button {
   height: 15px;
   border-radius: 2px;
   border: 2px solid #212121;
-  margin-left: 12px;
   margin-right: 9px;
   cursor: pointer;
   transition: background-color var(--transform-durac) var(--transition-func),
